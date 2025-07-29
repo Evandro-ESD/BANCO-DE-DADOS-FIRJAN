@@ -1,0 +1,12 @@
+-- Exercícios de Consultas
+
+-- 1. Selecione todos os jogos do gênero 'RPG'.
+-- 2. Liste os jogadores cujo nome começa com "L".
+-- 3. Mostre as compras com valor pago maior que 200.
+-- 4. Liste os jogos com preço entre 100 e 300.
+-- 5. Mostre os jogos que não são do gênero 'FPS'.
+-- 7. Mostre os jogos com título contendo "Impact".
+-- 8. Exiba as compras feitas entre '2024-03-01' e '2024-03-10'.
+-- 9. Liste os jogos com preço maior que 0 e menor ou igual a 250.
+-- 10. Mostre os nomes e e-mails dos jogadores com nome contendo "a".
+-- 11. Mostre os jogos cujo preço seja maior que 100 ou do gênero 'Aventura'

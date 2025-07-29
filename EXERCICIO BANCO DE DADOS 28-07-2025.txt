@@ -1,0 +1,59 @@
+-- Exercício de revisão
+CREATE DATABASE Financeiro;
+USE Financeiro;
+-- Tabela Cliente
+CREATE TABLE Cliente (
+ id_cliente INT PRIMARY KEY AUTO_INCREMENT,
+ nome VARCHAR(60) NOT NULL,
+ telefone CHAR(14) NOT NULL,
+ email VARCHAR(50) NOT NULL
+);
+-- Tabela Boleto
+CREATE TABLE Boleto (
+ id_boleto INT PRIMARY KEY AUTO_INCREMENT,
+ id_cliente INT NOT NULL,
+ numero_boleto VARCHAR(20) NOT NULL,
+ valor DECIMAL(10,2) NOT NULL,
+ data_vencimento DATE NOT NULL,
+ status ENUM('Pago', 'Em Atraso', 'Em Carteira') NOT NULL,
+ FOREIGN KEY (id_cliente) REFERENCES Cliente(id_cliente) ON DELETE CASCADE ON UPDATE CASCADE
+);
+-- Inserção de Registros em Cliente
+INSERT INTO Cliente (nome, telefone, email) VALUES
+('Aline Silva', '(21)91234-5678', 'aline.silva@email.com'),
+('Carlos Pereira', '(22)92345-6789', 'carlos.pereira@email.com'),
+('Fernanda Lima', '(24)93456-7890', 'fernanda.lima@email.com'),
+('João Oliveira', '(11)94567-8901', 'joao.oliveira@email.com');
+-- Inserção de Registros em Boleto
+INSERT INTO Boleto (id_cliente, numero_boleto, valor, data_vencimento, status) VALUES
+(1, '2024001', 500.00, '2024-04-10', 'Em Carteira'),
+(1, '2024002', 700.00, '2009-05-15', 'Em Atraso'),
+(2, '2024003', 300.00, '2010-04-20', 'Em Atraso'),
+(3, '2024004', 150.00, '2011-06-30', 'Pago'),
+(4, '2024005', 400.00, '2011-07-15', 'Em Atraso')
+
+-- 1. Listar nomes, telefones, números dos boletos e valores dos clientes do Rio de Janeiro (DDD 21)
+select c.nome, c.telefone, b.numero_boleto, b.valor
+from clinte c
+left join boleto b on c.id_cliente = b.id_cliente
+where c.telefone like '%21%';
+
+-- 2. Listar boletos em carteira da cliente ALINE SILVA
+select 
+
+-- 3. Listar nomes de clientes que possuem boletos com vencimento no mês de abril de qualquer ano
+
+-- 4. Apresentar a quantidade de boletos por cliente
+
+-- 5. Apresentar a quantidade de boletos agrupados por ano de vencimento
+
+-- 6. Apresentar a quantidade de boletos agrupados por mês e ano de vencimento
+
+-- 7. Listar nomes, valores e datas de vencimento dos boletos em atraso entre 2009 e 2011, ordenado pelo nome do 
+
+-- 8. Quantidade de boletos em atraso por cliente entre 2009 e 2011
+
+-- 9. Quantidade de boletos em atraso e valor total dos boletos em atraso por cliente entre 2009 e 2011
+
+-- 10. Nomes, telefones, e-mails e valor total dos boletos em atraso por cliente nas cidades com DDD 22, 24 e 11 entre 2009 e 201
+

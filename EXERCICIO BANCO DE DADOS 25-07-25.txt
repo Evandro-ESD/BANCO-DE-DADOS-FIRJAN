@@ -1,0 +1,131 @@
+CREATE DATABASE IF NOT EXISTS empresa3;
+USE empresa3;
+
+-- Tabela de Funcionários
+CREATE TABLE funcionarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100),
+    cargo VARCHAR(50)
+);
+
+-- Tabela de Departamentos
+CREATE TABLE departamentos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100)
+);
+
+-- Tabela de Projetos (relaciona funcionários e departamentos)
+CREATE TABLE projetos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    titulo VARCHAR(100),
+    data_inicio date,
+    id_funcionario INT,
+    id_departamento INT,
+    FOREIGN KEY (id_funcionario) REFERENCES funcionarios(id),
+    FOREIGN KEY (id_departamento) REFERENCES departamentos(id)
+);
+
+-- Inserindo funcionários
+INSERT INTO funcionarios (nome, cargo) VALUES
+('Ana Silva', 'Analista'),
+('Carlos Souza', 'Desenvolvedor'),
+('Beatriz Lima', 'Gerente'),
+('João Pedro', 'Designer');
+
+-- Inserindo departamentos
+INSERT INTO departamentos (nome) VALUES
+('TI'),
+('Marketing'),
+('Financeiro'),
+('RH');
+
+-- Inserindo projetos
+INSERT INTO projetos (titulo, data_inicio, id_funcionario, id_departamento) VALUES
+('Sistema Interno', '2020-05-20', 1, 1),
+('Campanha Digital', '2025-05-03', 4, 2),
+('Controle Financeiro', '2010-12-20', 2, 3),
+('Portal RH', '2025-06-12', 3, 4);
+
+select * from departamentos;
+-- mostrar todos
+select titulo, data_inicio, year(data_inicio) as AnoInicio from projetos;
+
+-- mostrar os dados cujo o ano sejam maiores que 2024
+select titulo, data_inicio from projetos where year(data_inicio) > 2024;
+
+-- mostrar os dados cujo o ano sejam iguais ao ano atual 
+select titulo, data_inicio from projetos where year(data_inicio) = year(curdate());
+
+-- Mostrar o cargo em maiusculas e o comprimento do nome de cada funcionário.
+select nome as Nome, upper(cargo)  as Cargo_em_Maiúsculo, length(nome) as Tamanho_caracteres from funcionarios;
+select nome as Nome, hex(upper(cargo))  as Cargo_em_Maiúsculo, length(nome) as Tamanho_caracteres from funcionarios;
+
+-- subconsultas
+-- Liste apenas os funcionarios quer estão vinculados a algum projeto
+
+
+-- Listar
+select * from departamentos;
+select * from funcionarios;
+select * from projetos;
+
+select  * from funcionarios where id in(select id_funcionario from projetos);
+
+select f.nome as NOME, p.titulo AS PROJETO, d.nome AS DEPARTAMENTO 
+from projetos p, funcionarios f, departamentos d
+where p.id_funcionario = f.id
+and f.id = d.id
+order by f.nome asc;
+
+-- apelidos em, tabelas e junção de tabelas
+-- titulo do projeto e nome do funcionário responsável
+select p.titulo, f.nome from funcionarios f, projetos p
+where p.id_funcionario = f.id;
+
+-- 3 tabelas
+-- Mostre o nome do funcionário, departamento e data de início do projeto
+select 
+f.nome as NOME,  
+d.nome as DEPARTAMENTO, 
+p.data_inicio as DATA_INICIO
+from funcionarios f, departamentos d, projetos p
+where 
+f.id = p.id_funcionario
+and
+p.id_departamento = d.id;
+
+-- Nome do funcionário e seu cargo em projetos iniciados antes de 2023
+select f.nome, f.cargo, p.titulo from funcionarios f, projetos p
+where p.id_funcionario = f.id and p.data_inicio < '2023-01-01';
+
+-- Faça as consultas
+-- Mostrar os nomes de funcionários, cargos e data de início
+select f.nome, f.cargo, p.data_inicio from funcionarios f, projetos p
+where p.id_funcionario = f.id;
+
+-- Mostrar os cargos e departamentos, apenas do departamento RH
+select f.cargo as CARGO, d.nome as DEPARTAMENTOS from funcionarios f, departamentos p
+where p.id_funcionarios = f.id
+and p.id_departemento = d.id
+and p.nome = 'RH';
+
+-- join
+select 
+f.cargo as Cargo,
+d.nome as Departamento
+from projetos
+join funcionarios f on p.id_funcionario = f.id
+join departamento d on p.id_departamento = d.id
+where d.nome;
+
+
+
+
+
+
+
+
+
+
+
+
