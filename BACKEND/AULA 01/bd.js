@@ -1,16 +1,20 @@
-var mysql = require('mysql')
+// const express = require('express');
+var mysql = require('mysql2');
+
 var connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: 'root',
     database: 'sistema'
-})
+});
 
-connection.connect()
+// mensagem de conexão
+connection.connect((err) => {
+    if (err) {
+        console.error('Erro ao conectar:', err.message);
+        return;
+    }
+    console.log('Conexão bem-sucedida!', connection.threadId);
+});
 
-// connection.query('SELECT * FROM sistema', function (error, results, fields) {
-//     if (error) throw error;
-//     console.log('The solution is: ', results[0].solution);
-// })
-
-connection.end();
+module.exports = connection
