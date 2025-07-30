@@ -20,7 +20,16 @@ app.get('/pessoas', (req, res) => {
     })
 })
 
-app.post()
+app.post('/pessoas', (req, res) => {
+    const { nome, sexo } = req.body
+    const sql = "insert into pessoa(nome, sexo) value (?, ?)"
+
+    db.query(sql, [nome, sexo], (erro, resultado) => {
+        if (erro)
+            return res.status(500).json({ erro: 'Erro ao inserir dados' });
+        res.status(201).json({ mensagem: `Pessoa inserida com sucesso`, id: resultado.insertId })
+    })
+})
 
 
 // iniciar o servidor
