@@ -1,0 +1,24 @@
+
+insomnia
+
+express 
+
+nodedemon
+
+MVC
+
+MODEL - Lida diretamente com banco de dados
+
+VIEW - Frontend
+
+CONTROLLER - Contém a lógica
+
+nopm - init -y
+
+npm i nodedemon
+
+npm i express 
+
+npm i body-parse
+
+npm i mysql12
