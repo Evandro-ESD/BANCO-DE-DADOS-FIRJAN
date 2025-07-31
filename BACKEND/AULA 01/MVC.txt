@@ -3,7 +3,7 @@ insomnia
 
 express 
 
-nodedemon
+nodemon
 
 MVC
 
@@ -13,9 +13,9 @@ VIEW - Frontend
 
 CONTROLLER - Contém a lógica
 
-nopm - init -y
+npm - init -y
 
-npm i nodedemon
+npm i nodemon
 
 npm i express 
 

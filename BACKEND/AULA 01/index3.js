@@ -13,9 +13,8 @@ app.use(bodyParse.json())
 app.get('/pessoas', (req, res) => {
     const sql = 'select * from pessoa'
     db.query(sql, (erro, resultado) => {
-        if (erro) {
+        if (erro)
             return res.status(500).json({ erro: 'Erro ao buscar dados' });
-        }
         res.json(resultado);
     })
 })
@@ -30,7 +29,30 @@ app.post('/pessoas', (req, res) => {
         res.status(201).json({ mensagem: `Pessoa inserida com sucesso`, id: resultado.insertId })
     })
 })
+// ATUALIZAÇÃO DOS DADOS
+app.put('/pessoas/:id', (req, res) => {
+    const { id } = req.params;
+    const { nome, sexo } = req.body
 
+    const sql = 'update pessoa set nome = ?, sexo = ? where id = ?'
+
+    db.query(sql, [nome, sexo, id], (erro, resultado) => {
+        if (erro)
+            return res.status(500).json({ erro: 'Erro ao atualizar dados' })
+        res.status(201).json({ mensagem: `Pessoa atualizada com sucesso` })
+    })
+})
+
+// ATUALIZAÇÃO DOS DADOS
+app.delete('/pessoas/:id', (req, res) => {
+    const { id } = req.params
+    const sql = 'delete from pessoa where id = ?'
+    db.query(sql, [id], (erro, resultado) => {
+        if (erro)
+            return res.status(500).json({ erro: 'Erro ao deletar' })
+        res.status(200).json({ mensagem: 'Pessoa excluida co sucesso!!!' })
+    })
+})
 
 // iniciar o servidor
 app.listen(PORT, () => {
