@@ -16,14 +16,43 @@ app.get('/clientes', (req, res) => {
 })
 
 // inserir infrormações
-app.post('clientes/create', (req, res) => {
+app.post('/clientes/create', (req, res) => {
     const { nome, cpf } = req.body
-    const sql = `INSERT INTO cliente VALUES(?, ?)`
+    const sql = `INSERT INTO cliente (nome, cpf) VALUES (?, ?)`
 
     db.query(sql, [nome, cpf], (err, result) => {
-        if (err) res.status(500).json({ Erro: 'Erro ao inserir dados' });
-        res.status(201).json({ mensagem: `Cliente criado com sucesso` });
+        if (err) res.status(500).json({ Erro: 'Erro ao inserir dados', err });
+        res.status(201).json({
+            mensagem: `Cliente criado com sucesso`,
+            resultado: result
+        },
+
+        );
     });
+})
+// Editar valores
+app.put('/clientes/update/:id', (req, res) => {
+    const { id } = req.params
+    const { nome, cpf } = req.body
+
+    const sql = `update cliente set nome = ? cpf = ? where id = ?`
+
+    db.query(sql, [nome, cpf, id], (err, result) => {
+        if (err) return res.status(500).json({ Erro: 'Erro ao editar cliente' })
+        res.status(201)
+            .json({ mensagem: `Cliente ${nome} - CPF ${cpf} editado com sucesso!!` })
+    })
+
+});
+
+// Exclusão de clientes!!!
+app.delete('/clientes/delete/:id', (req, res) => {
+    const { id } = req.params
+    const sql = `DELETE FROM cliente WHERE (id = '4444')`
+
+    db.delete(sql, [id], (err, result) => { 
+        if(err) 
+    })
 })
 
 
