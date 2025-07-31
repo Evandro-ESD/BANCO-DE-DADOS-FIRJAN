@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesTabela.css">
+    <title>Exercício de BackEnd com nodejs e express</title>
+</head>
+
+<body>
+    <div class="container">
+  <table id="clientesTable" border="1" cellspacing="0" cellpadding="5">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>CPF</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Dados vão aparecer aqui -->
+    </tbody>
+  </table>
+</div>
+
+<script>
+  async function carregarClientes() {
+    try {
+      const response = await fetch('http://localhost:3001/clientes');
+      if (!response.ok) throw new Error('Erro ao buscar dados');
+
+      const clientes = await response.json();
+      const tbody = document.querySelector('#clientesTable tbody');
+
+      // Limpa linhas antigas
+      tbody.innerHTML = '';
+
+      // Preenche a tabela
+      clientes.forEach(cliente => {
+        const tr = document.createElement('tr');
+
+        const tdNome = document.createElement('td');
+        tdNome.textContent = cliente.nome;
+
+        const tdCpf = document.createElement('td');
+        tdCpf.textContent = cliente.cpf;
+
+        tr.appendChild(tdNome);
+        tr.appendChild(tdCpf);
+
+        tbody.appendChild(tr);
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  // Chama a função para carregar clientes ao carregar a página
+  window.onload = carregarClientes;
+</script>
+
+</body>
+
+</html>
