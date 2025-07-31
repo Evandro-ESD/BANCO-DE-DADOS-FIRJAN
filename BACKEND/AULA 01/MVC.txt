@@ -19,6 +19,6 @@ npm i nodemon
 
 npm i express 
 
-npm i body-parse
+npm i body-parser
 
 npm i mysql12

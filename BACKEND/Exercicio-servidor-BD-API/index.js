@@ -26,7 +26,6 @@ app.post('/clientes/create', (req, res) => {
             mensagem: `Cliente criado com sucesso`,
             resultado: result
         },
-
         );
     });
 })
@@ -35,26 +34,31 @@ app.put('/clientes/update/:id', (req, res) => {
     const { id } = req.params
     const { nome, cpf } = req.body
 
-    const sql = `update cliente set nome = ? cpf = ? where id = ?`
+    const sql = `update cliente set nome = ?, cpf = ? where id = ?`
 
     db.query(sql, [nome, cpf, id], (err, result) => {
         if (err) return res.status(500).json({ Erro: 'Erro ao editar cliente' })
-        res.status(201)
+
+        res.status(200)
             .json({ mensagem: `Cliente ${nome} - CPF ${cpf} editado com sucesso!!` })
     })
-
 });
 
 // Exclusão de clientes!!!
 app.delete('/clientes/delete/:id', (req, res) => {
     const { id } = req.params
-    const sql = `DELETE FROM cliente WHERE (id = '4444')`
+    const sql = `DELETE FROM cliente WHERE id = ?`
 
-    db.delete(sql, [id], (err, result) => { 
-        if(err) 
+    db.query(sql, [id], (err, result) => {
+        if (err) return res.status(500).json({ Erro: 'Erro ao excluir cliente' })
+
+        if (result.affectedRows === 0)
+            return res.status(404).json({ mensagem: 'Cliente não encontrado' });
+
+        res.status(200)
+            .json({ mensagem: `Cliente excluido com sucesso!!` })
     })
 })
-
 
 // iniciar o servidor
 app.listen(PORT, () => {
