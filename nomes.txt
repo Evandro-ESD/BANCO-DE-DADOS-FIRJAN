@@ -1,0 +1,11 @@
+[
+  { "nome": "Beregorn de Gondor", "cpf": "987.654.321-00" },
+  { "nome": "Lóminas Brisfolha", "cpf": "741.852.963-10" },
+  { "nome": "Dwalin Pedraferro", "cpf": "159.753.486-20" },
+  { "nome": "Elariel Galathil", "cpf": "321.654.987-30" },
+  { "nome": "Thrain Barba de Carvalho", "cpf": "258.369.147-40" },
+  { "nome": "Finduilas Telrunya", "cpf": "963.852.741-50" },
+  { "nome": "Glóin Cavaforte", "cpf": "147.258.369-60" },
+  { "nome": "Aranarth Valandil", "cpf": "369.147.258-70" },
+  { "nome": "Míriel Sombravento", "cpf": "753.159.456-80" }
+]

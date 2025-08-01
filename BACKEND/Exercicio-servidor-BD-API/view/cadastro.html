@@ -2,62 +2,78 @@
 <html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="stylesTabela.css">
-    <title>Exercício de BackEnd com nodejs e express</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="stylesTabela.css">
+  <title>Exercício de BackEnd com nodejs e express</title>
 </head>
 
 <body>
-    <div class="container">
-  <table id="clientesTable" border="1" cellspacing="0" cellpadding="5">
-    <thead>
-      <tr>
-        <th>Nome</th>
-        <th>CPF</th>
-      </tr>
-    </thead>
-    <tbody>
-      <!-- Dados vão aparecer aqui -->
-    </tbody>
-  </table>
-</div>
+  <div class="container">
+    <table id="clientesTable" border="1" cellspacing="0" cellpadding="5">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>CPF</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Dados vão aparecer aqui -->
+      </tbody>
+    </table>
+  </div>
 
-<script>
-  async function carregarClientes() {
-    try {
-      const response = await fetch('http://localhost:3001/clientes');
-      if (!response.ok) throw new Error('Erro ao buscar dados');
+  <script>
+    async function carregarClientes() {
+      try {
+        const response = await fetch('http://localhost:3001/clientes');
+        if (!response.ok) throw new Error('Erro ao buscar dados');
 
-      const clientes = await response.json();
-      const tbody = document.querySelector('#clientesTable tbody');
+        const clientes = await response.json();
+        const tbody = document.querySelector('#clientesTable tbody');
 
-      // Limpa linhas antigas
-      tbody.innerHTML = '';
+        // Limpa linhas antigas
+        tbody.innerHTML = '';
 
-      // Preenche a tabela
-      clientes.forEach(cliente => {
-        const tr = document.createElement('tr');
+        // Preenche a tabela
+        clientes.forEach(cliente => {
+          const tr = document.createElement('tr');
 
-        const tdNome = document.createElement('td');
-        tdNome.textContent = cliente.nome;
+          const tdNome = document.createElement('td');
+          tdNome.textContent = cliente.nome;
 
-        const tdCpf = document.createElement('td');
-        tdCpf.textContent = cliente.cpf;
+          const tdCpf = document.createElement('td');
+          tdCpf.textContent = cliente.cpf;
 
-        tr.appendChild(tdNome);
-        tr.appendChild(tdCpf);
+          const tdAcoes = document.createElement('td');
+          tdAcoes.classList.add('acoes-cell'); // classe para alinhamento
 
-        tbody.appendChild(tr);
-      });
-    } catch (error) {
-      console.error(error);
+          const btnEditar = document.createElement('button');
+          btnEditar.textContent = 'Editar';
+          btnEditar.classList.add('btn', 'btn-editar');
+
+          const btnExcluir = document.createElement('button');
+          btnExcluir.textContent = 'Excluir';
+          btnExcluir.classList.add('btn', 'btn-excluir');
+
+          tdAcoes.appendChild(btnEditar);
+          tdAcoes.appendChild(btnExcluir);
+
+          tr.appendChild(tdNome);
+          tr.appendChild(tdCpf);
+          tr.appendChild(tdAcoes);
+
+          tbody.appendChild(tr);
+        });
+      } catch (error) {
+        console.error(error);
+      }
     }
-  }
 
-  // Chama a função para carregar clientes ao carregar a página
-  window.onload = carregarClientes;
-</script>
+    // Chama a função para carregar clientes ao carregar a página
+    window.onload = carregarClientes;
+  </script>
 
 </body>
 
