@@ -1,0 +1,8 @@
+iniciar a pasta
+
+npm init -y
+
+npm i express mysql2 cors body-parser
+
+npm i nodemon ( "dev": "nodemon server.js")
+
