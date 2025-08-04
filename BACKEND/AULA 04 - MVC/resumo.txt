@@ -6,3 +6,4 @@ npm i express mysql2 cors body-parser
 
 npm i nodemon ( "dev": "nodemon server.js")
 
+Ordmem das pastas MVC e funções
