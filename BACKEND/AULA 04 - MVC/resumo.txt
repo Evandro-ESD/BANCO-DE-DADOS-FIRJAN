@@ -19,4 +19,12 @@ npm i nodemon ( "dev": "nodemon server.js")
 
 
 
-        oficina - cliente 
+        Banco de dados oficina - cliente
+
+        server.js -> 
+            app.js -> 
+                clienteRouter.js -> 
+                    clienteController.js -> 
+                        clienteService.js ->
+                            clienteRepository.j ->
+                                db.js

@@ -1,0 +1,1 @@
+const repo = require('../repository/clienteRepository')
