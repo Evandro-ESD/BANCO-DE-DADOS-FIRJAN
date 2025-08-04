@@ -6,4 +6,17 @@ npm i express mysql2 cors body-parser
 
 npm i nodemon ( "dev": "nodemon server.js")
 
-Ordmem das pastas MVC e funções
+### Ordem das pastas MVC e funções ###
+    - pasta src
+        1 - config     -> db.js - conexão ao banco de dados
+        2 - repository -> clienteRepository.js - MySQL direto
+        3 - service    -> clienteService.js - regra de negocios
+        4 - controller -> clienteController.js - controla as entgradas e respostas do HTTP
+        5 - routes     -> clienteRoutes.js - define as rotas da API
+        6 - src/app.js -  monta app express
+        7 - pasta raiz do projeto - server.js - Inicia o servidor - porta 3008 
+
+
+
+
+        oficina - cliente 
