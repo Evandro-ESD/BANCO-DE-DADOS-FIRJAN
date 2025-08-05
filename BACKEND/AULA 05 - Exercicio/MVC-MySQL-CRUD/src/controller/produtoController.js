@@ -20,7 +20,7 @@ exports.getProdutoId = (req, res) => {
 exports.insertProduto = (req, res) => {
     service.insert(req.body, (err, result) => {
         if (err) return res.status(500).json({ erro: `Erro ao inserir produto: ${err}` })
-        res.status(201).res.json({ mensagem: 'Produto inserido com sucesso!', id: result.insertID })
+        res.status(201).json({ mensagem: 'Produto inserido com sucesso!', id: result.insertID })
     })
 }
 
