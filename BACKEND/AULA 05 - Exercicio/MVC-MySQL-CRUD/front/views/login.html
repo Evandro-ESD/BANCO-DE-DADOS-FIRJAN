@@ -12,7 +12,7 @@
     }
 
     .capa {
-      background-image: url('./assets/fundo/Smaug_par_David_Demaret.jpg');
+      background-image: url('./assets/fundo/');
       background-size: cover;
       background-position: center;
       height: 20vh;
@@ -120,12 +120,13 @@
       if (usuario === 'admin' && senha === 'esgaroth123') {
         alert('Login bem-sucedido!');
         // Redirecionar ou abrir a próxima página aqui
-        // window.location.href = 'dashboard.html';
+        window.location.href = 'http://127.0.0.1:5500/front/index.html';
       } else {
         alert('Usuário ou senha incorretos.');
       }
     }
   </script>
+  <script src="../../backend/scraping/scraping.js"></script>
 
 </body>
 </html>
