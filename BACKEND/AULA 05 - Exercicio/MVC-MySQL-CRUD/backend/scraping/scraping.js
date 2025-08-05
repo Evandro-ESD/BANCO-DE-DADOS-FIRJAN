@@ -10,4 +10,4 @@ async function lerExcel(caminho) {
   });
 }
 
-lerExcel('./caminho/arquivo.xlsx');
+lerExcel('./');
