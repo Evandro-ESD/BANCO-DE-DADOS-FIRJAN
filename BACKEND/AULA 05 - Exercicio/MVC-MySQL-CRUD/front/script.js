@@ -22,8 +22,9 @@ function getProdutos() {
                 tabelaProdutos.innerHTML = `Nenhum produto cadastrado`
                 return
             }
-            const linha = document.createElement('tr')
+            tabelaProdutos.innerHTML = ''
             produto.forEach(p => {
+                const linha = document.createElement('tr')
                 linha.innerHTML = `
                 <td>${p.id}</td>
                 <td>${p.nome}</td>
@@ -35,8 +36,8 @@ function getProdutos() {
                     <button>❌</button>
                 </td>
             `
-            });
             tabelaProdutos.appendChild(linha)
+            });
         })
 }
 
@@ -48,7 +49,7 @@ form.addEventListener('submit', (e) => {
     const precoInput = document.querySelector('#preco').value
     const estoqueInput = document.querySelector('#estoque').value
 
-    let produto = { nomeInput, precoInput, estoqueInput }
+    let produto = { nome:nomeInput, preco: precoInput, estoque: estoqueInput }
 
     const metodo = idInput ? 'PUT' : 'POST'; // se existe id o metodo é PUT
     const url = idInput ? `${apiUrl}/${idInput}` : apiUrl;
@@ -60,11 +61,13 @@ form.addEventListener('submit', (e) => {
     })
         .then(() => {
             form.reset()
+            nomeBotao.innerText = 'Adicionar Produto'
             getProdutos()
         })
 })
 
 function editar(id, nome, preco, estoque) {
+    console.log(id, nome, preco, estoque)
     document.querySelector('#id').value = id
     document.querySelector('#nome').value = nome
     document.querySelector('#preco').value = preco
@@ -76,7 +79,7 @@ function excluir(id) {
     if (confirm('Tem certeza que deseja excluir?')) {
         fetch(`${apiUrl}/${id}`, {
             method: 'delete'
-        }).then(() => carregarClientes());
+        }).then(() => getProdutos());
     }
 }
 
