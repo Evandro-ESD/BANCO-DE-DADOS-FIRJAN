@@ -1,8 +1,10 @@
-CREATE DATABASE loja_play;
-USE loja_play;
+create database loja_play;
+use loja_play;
 
-CREATE TABLE usuarios(
-    id INT PRIMARY KEY auto_increment,
-    login VARCHAR(50 NOT NULL,
-    senha VARCHAR(255) NOT NULL
+create table usuarios(
+    id int primary key auto_increment,
+    login varchar(50) not null,
+    senha varchar(255) not null
+
 );
+select * from usuarios;
