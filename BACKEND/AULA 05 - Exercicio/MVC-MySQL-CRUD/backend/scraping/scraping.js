@@ -10,4 +10,4 @@ async function lerExcel(caminho) {
   });
 }
 
-lerExcel('./');
+lerExcel('backend/arquivos/produtos-loja2.xlsx');
