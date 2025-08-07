@@ -35,7 +35,7 @@ async function logar() {
   if (res.ok) {
     document.getElementById('token').value = data.token;
     alert("Login realizado com sucesso!");
-    // window.location.href = "adm.html";
+    window.location.href = "adm.html";
   } else {
     alert("Erro ao logar: " + data.erro);
   }

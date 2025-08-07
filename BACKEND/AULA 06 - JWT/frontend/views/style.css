@@ -21,6 +21,7 @@ h1, h2 {
 
 .form-container {
   margin-bottom: 20px;
+  width: 100%;
 }
 
 input {
@@ -30,6 +31,9 @@ input {
   padding: 10px;
   border-radius: 6px;
   border: 1px solid #ccc;
+}
+input, #token{
+  box-sizing: border-box;
 }
 
 button {
