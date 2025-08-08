@@ -1,33 +1,34 @@
 const db = require('../db')
 
-const db = pool
-
+//exibir os dados da tabela usuarios
 exports.getAll = (req, res) => {
-    db.query('SELECT * FROM usuarios', (err, result) => {
-        if (err) return res.status(500).json({
-            erro: err
-        })
-        res.json(result)
+    const sql = 'select * from usuarios'
+    db.query(sql, (erro, resultado) => {
+        if(erro) return res.status(500).json({erro: erro})
+            res.json(resultado)
     })
-
 }
+
 //criar registros na tabela usuarios
 exports.create = (req, res) => {
-    const { nome, email } = req.body
-    db.query('INSERT INTO usuarios (nome, email) VALUES (?,?)', [nome, email], (erro) => {
-        if (erro) return res.status(500).json({ erro: erro })
-        res.status(201).json({ mensagem: 'Usuário inserido com sucesso!' })
+    const {nome, email} = req.body;
+    const sql = 'insert into usuarios (nome, email) values (?, ?)'
+    db.query(sql, [nome, email], (erro) => {
+        if(erro) return res.status(500).json({erro: erro})
+            res.status(201).json({ mensagem: 'Usuário criado com sucesso!!' })
     })
 }
  //atualizar registros da tabela usuarios
-exports.update = (req, res) => {
-    const { id } = req.params
-    const { nome, email } = req.body
-    db.query('UPDATE usuarios SET nome = ?, email = ? WHERE id = ?', [nome, email, id], (erro) => {
-        if (erro) return req.status(500).json({ erro: erro })
-        res.status(201).json({ mensagem: 'Usuário atualizado com sucesso!' })
+ exports.update = (req, res) => {
+    const {id} = req.params;
+    const {nome, email} = req.body;
+    const sql = 'update usuarios set nome = ?, email = ? where id = ?'
+    db.query(sql, [nome, email, id], (erro) => {
+        if(erro) return res.status(500).json({erro: erro})
+            res.json({ mensagem: 'Usuário atualizado com sucesso!!' })
     })
-}
+
+ }
 
  // Excluir registros da tabela usuarios
 exports.delete = (req, res) => {
