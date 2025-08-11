@@ -1,0 +1,107 @@
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  box-shadow: 1px 0 10px 1px #e68900;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+input[type="text"],
+input[type="email"] {
+  padding: 8px;
+  margin: 5px 0;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+button {
+  padding: 8px 15px;
+  margin: 5px;
+  background-color: #1976d2;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+button:hover {
+  background-color: #145a96;
+}
+
+form {
+  background: #f9f9f9;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+}
+
+form label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+form button[type="reset"] {
+  background-color: #757575;
+}
+
+form button[type="reset"]:hover {
+  background-color: #5c5c5c;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+table thead {
+  background-color: #1976d2;
+  color: white;
+}
+
+table th,
+table td {
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+table tr:nth-child(even) {
+  background-color: #f5f5f5;
+}
+
+table tr:hover {
+  background-color: #e0e0e0;
+}
+
+td button {
+  margin-right: 5px;
+  font-size: 12px;
+  padding: 5px 10px;
+}
+
+td button:nth-child(1) {
+  background-color: #ff9800;
+}
+
+td button:nth-child(1):hover {
+  background-color: #e68900;
+}
+
+td button:nth-child(2) {
+  background-color: #f44336;
+}
+
+td button:nth-child(2):hover {
+  background-color: #d32f2f;
+}

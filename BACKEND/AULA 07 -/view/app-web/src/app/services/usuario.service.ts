@@ -29,7 +29,7 @@ export class UsuarioService {
     return this.http.put(this.api + '/' + id, usuario)
   }
 
-  deleteUsuarios(id: number): Observable<any> {
+  deleteUsuario(id: number): Observable<any> {
     return this.http.delete(this.api + '/' + id)
   }
 

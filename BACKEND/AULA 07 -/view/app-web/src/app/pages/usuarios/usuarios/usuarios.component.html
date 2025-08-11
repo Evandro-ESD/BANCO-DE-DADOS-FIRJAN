@@ -1,8 +1,41 @@
 <div class="container">
+
+    <div class="container">
+        <h1>Gerenciar Usuários</h1>
+        <input type="text" [(ngModel)]="usuario.nome" placeholder="Nome">
+        <input type="email" [(ngModel)]="usuario.email" placeholder="E-mail">
+        <button (click)="salvar()">{{editando ? 'Atualizar' : 'Adicionar'}}</button>
+    </div>
+
+<!-- 
     <form [formGroup]="formUsuario" (submit)="salvar()">
-        <label for="nome">Nome: <input id="nome" name="nome" type="text" formControlName="nome" placeholder="Nome"></label>
-        <label for="email">Email: <input id="email" name="email" type="email" formControlName="email" placeholder="E-mail"></label>
+        <label for="nome">Nome: <input id="nome" name="nome" type="text" formControlName="nome"
+                placeholder="Nome"></label>
+        <label for="email">Email: <input id="email" name="email" type="email" formControlName="email"
+                placeholder="E-mail"></label>
         <button type="reset">Limpar</button>
         <button type="submit">Salvar</button>
-    </form>
+    </form> -->
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>E-mail</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- @for(let u of usuarios){} -->
+            <tr *ngFor="let u of usuarios">
+                <td>{{u.nome}}</td>
+                <td>{{u.email}}</td>
+                <td>
+                    <button (click)="editar(u)"> Editar</button>
+                    <button (click)="excluir(u.id!)"> Excluir</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
 </div>
