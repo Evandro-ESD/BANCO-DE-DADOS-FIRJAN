@@ -1,15 +1,18 @@
 import express from 'express'
-
 import {
     getAll,
-    getPlayForId,
-    addPlay,
-    updatePlay,
-    deletePlay
-} from '../controller/catalogoControler.js'
+    getById,
+    create,
+    update,
+    remove
+} from '../controller/catalogoController.js'
 
-router = express.Router()
+const router = express.Router()
 
+router.get('/', getAll)
+router.get('/:id', getById)
+router.post('/', create)
+router.put('/:id', update)
+router.delete('/:id', remove)
 
-
-
+export default router
