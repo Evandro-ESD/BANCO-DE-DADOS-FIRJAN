@@ -1,6 +1,25 @@
 <div class="containerLayout">
     <app-header></app-header>
     <div class="containerCards">
-        <app-card></app-card>
+        @for (game of service.listaJogos; track game.id) {
+          <app-card
+            [titulo]="game.nome || ''"
+            [tipo]="game.tipo || ''"
+            [ano]="game.ano || ''"
+            [btnEditar]="'Editar'"
+            [btnExcluir]="'Excluir'"
+
+            (funcao)="editar(game.id, game)"
+        ></app-card>
+        }
+    </div>
+
+    <div class="modal">
+        <app-modal
+        (close)="true"
+        [titulo]="'Editar'"
+        [accessKey]="true"
+        (close)="closeModalEditar()"
+        ></app-modal>
     </div>
 </div>

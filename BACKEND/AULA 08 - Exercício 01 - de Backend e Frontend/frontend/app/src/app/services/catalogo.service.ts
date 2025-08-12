@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Game } from '../entities/game';
 import { environment } from '../../environments/environment.development';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 
 
 
@@ -19,6 +19,10 @@ export class CatalogoService {
 
   getAll(): Observable<Game[]> {
     return this.http.get<Game[]>(environment.apiUrl)
+      .pipe(tap((games) => {
+        this.listaJogos = games
+        console.log(this.listaJogos)
+      }))
   }
 
   createGame(game: Game): Observable<Game> {
