@@ -1,0 +1,87 @@
+.containerLayout {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+.containerCards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+/* Supondo que app-card tenha uma div interna, se não, pode estilizar diretamente app-card */
+app-card {
+  display: block;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+  padding: 1.5rem;
+  transition: box-shadow 0.3s ease;
+  cursor: pointer;
+}
+app-card:hover {
+  box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+}
+
+.modal {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden; /* controle para abrir o modal */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 999;
+}
+
+.modal.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Supondo que app-modal tenha um container interno */
+app-modal {
+  background: #fff;
+  border-radius: 10px;
+  padding: 2rem;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+  position: relative;
+}
+
+/* Exemplo para botões Editar e Excluir dentro do app-card se precisar */
+button {
+  padding: 0.5rem 1rem;
+  margin-right: 0.5rem;
+  border: none;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button.editar {
+  background-color: #007bff;
+  color: white;
+}
+
+button.editar:hover {
+  background-color: #0056b3;
+}
+
+button.excluir {
+  background-color: #dc3545;
+  color: white;
+}
+
+button.excluir:hover {
+  background-color: #a71d2a;
+}

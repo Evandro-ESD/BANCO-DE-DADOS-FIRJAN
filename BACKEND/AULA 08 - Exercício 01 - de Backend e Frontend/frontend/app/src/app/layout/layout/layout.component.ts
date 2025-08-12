@@ -15,15 +15,15 @@ import { ModalComponent } from '../../shared/components/modal/modal.component';
 export class LayoutComponent implements OnInit {
   router = inject(Router)
   service = inject(CatalogoService)
-  
+
   ngOnInit() {
     this.service.getAll().subscribe()
   }
 
   @ViewChild('modal') modal!: ModalComponent;
 
-  openModalEditar() {
-
+  openModalEditar(id: any, game: Game) {
+    
   }
   closeModalEditar() {
 
