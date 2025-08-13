@@ -1,0 +1,15 @@
+<h2>Jogos Cadastrados</h2>
+
+    @if (games.length === 0) {
+      <p>Nenhum jogo cadastrado.</p>
+    } @else {
+      <ul>
+        @for (game of games; track game.id) {
+          <li>
+            <strong>{{ game.nome }}</strong> ({{ game.tipo }}, {{ game.ano }})
+            <!-- <a [routerLink]="['/gerencia/editar', game.id]">✏️ Editar</a> -->
+            <!-- <a href="#" (click)="remover(game.id)">🗑️ Excluir</a> -->
+          </li>
+        }
+      </ul>
+    }
