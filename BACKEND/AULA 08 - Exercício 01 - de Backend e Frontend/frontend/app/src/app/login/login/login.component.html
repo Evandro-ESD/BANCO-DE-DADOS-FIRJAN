@@ -1,0 +1,10 @@
+<h2>Login</h2>
+<form (ngSubmit)="onSubmit()">
+    <input type="text" [(ngModel)]="username" name="username" placeholder="Usuário" required>
+    <input type="password" [(ngModel)]="password" name="password" placeholder="Senha" required>
+    <button type="submit">Entrar</button>
+
+    @if(error){
+    <div style="color:red">{{ error }}</div>
+    }
+</form>

@@ -1,0 +1,6 @@
+<h2>Jogos Disponíveis</h2>
+<ul>
+    @for(jogo of jogos; track jogo.id){
+    <li>{{ jogo.nome }} ({{ jogo.ano }})</li>
+    }
+</ul>

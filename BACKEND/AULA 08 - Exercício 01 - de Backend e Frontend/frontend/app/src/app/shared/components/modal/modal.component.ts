@@ -9,30 +9,17 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrl: './modal.component.css'
 })
 export class ModalComponent {
-  mostrar = false
+  @Input() visible = false;
+  @Input() title = 'Modal';
+  @Output() closeModal = new EventEmitter<void>();
+  @Output() confirm = new EventEmitter<void>();
 
-  inputNome: string = ''
-  inputTipo: string = ''
-  inputAno: string = ''
-
-  @Input() titulo: string = ''
-  @Output() close = new EventEmitter<void>()
-  @Output() confirm = new EventEmitter<{ inputNome: string, inputTipo: string, inputAno: string }>()
-
-  open() {
-    this.mostrar = true
-    this.inputNome = ''
-    this.inputTipo = ''
-    this.inputAno = ''
+  close() {
+    this.visible = false;
+    this.closeModal.emit();
   }
-  closeModal() {
-    this.mostrar = true
-    this.close.emit()
+  _confirm() {
+    this.confirm.emit();
+    this.visible = false
   }
-  confirmar() {
-    this.confirm.emit({ inputNome: this.inputNome, inputTipo: this.inputTipo, inputAno: this.inputAno });
-
-    this.confirm.emit()
-  }
-
 }

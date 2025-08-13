@@ -1,6 +1,14 @@
-<div class="modal-overlay" *ngIf="mostrar" (click)="closeModal()">
-  <div class="modal-content" (click)="$event.stopPropagation()">
-    <ng-content></ng-content> <!-- conteúdo dinâmico do modal -->
-    <button (click)="closeModal()">Fechar</button>
-  </div>
-</div>
+
+@if (visible) {
+      <div class="overlay" (click)="close()">
+        <section class="modal" (click)="$event.stopPropagation()">
+          <header>
+            <h3>{{ title }}</h3>
+            <button (click)="close()">✖</button>
+          </header>
+          <main>
+            <ng-content></ng-content>
+          </main>
+        </section>
+      </div>
+    }
