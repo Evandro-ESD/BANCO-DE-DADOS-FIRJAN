@@ -1,6 +1,6 @@
-<h2>Jogos Disponíveis</h2>
-<ul>
+<h2 class="titulo-jogos">Jogos Disponíveis</h2>
+<ul class="lista-jogos">
     @for(jogo of jogos; track jogo.id){
-    <li>{{ jogo.nome }} ({{ jogo.ano }})</li>
+    <li class="item-jogo">{{ jogo.nome }} -{{ jogo.tipo }} - {{ jogo.ano }}</li>
     }
 </ul>

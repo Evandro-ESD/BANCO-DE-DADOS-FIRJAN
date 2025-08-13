@@ -1,4 +1,4 @@
-<h2>Jogos Cadastrados</h2>
+<!-- <h2>Jogos Cadastrados</h2>
 
     @if (games.length === 0) {
       <p>Nenhum jogo cadastrado.</p>
@@ -7,9 +7,44 @@
         @for (game of games; track game.id) {
           <li>
             <strong>{{ game.nome }}</strong> ({{ game.tipo }}, {{ game.ano }})
-            <!-- <a [routerLink]="['/gerencia/editar', game.id]">✏️ Editar</a> -->
-            <!-- <a href="#" (click)="remover(game.id)">🗑️ Excluir</a> -->
+            <a [routerLink]="['/gerencia/editar', game.id]">✏️ Editar</a>
+            <a href="#" (click)="remover(game.id)">🗑️ Excluir</a>
           </li>
         }
       </ul>
-    }
+    } -->
+
+<h2>Jogos Cadastrados</h2>
+
+@if (games.length === 0) {
+<p>Nenhum jogo cadastrado.</p>
+} @else {
+<ul>
+  @for (game of games; track game.id) {
+  <li>
+    <strong>{{ game.nome }}</strong> ({{ game.tipo }}, {{ game.ano }})
+    <button (click)="abrirModal(game)">Editar</button>
+    <button (click)="remover(game.id || 0)"> Excluir</button>
+  </li>
+  }
+</ul>
+}
+
+<button (click)="abrirModal()">Novo Jogo</button>
+
+<!-- Modal -->
+<app-modal [visible]="modalVisivel" [title]="modalTitulo" (closeModal)="fecharModal()">
+  <form (ngSubmit)="salvar()" #form="ngForm">
+    <input type="text" [(ngModel)]="jogo.nome" name="nome" placeholder="Nome" required #nome="ngModel" />
+    <div *ngIf="nome.invalid && nome.touched" style="color:red">Nome é obrigatório</div>
+
+    <input type="text" [(ngModel)]="jogo.tipo" name="tipo" placeholder="Tipo" required #tipo="ngModel" />
+    <div *ngIf="tipo.invalid && tipo.touched" style="color:red">Tipo é obrigatório</div>
+
+    <input type="number" [(ngModel)]="jogo.ano" name="ano" placeholder="Ano" required #ano="ngModel" />
+    <div *ngIf="ano.invalid && ano.touched" style="color:red">Ano é obrigatório</div>
+
+    <button type="submit" [disabled]="form.invalid">Salvar</button>
+  </form>
+</app-modal>
+`

@@ -1,5 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { CatalogoService } from '../../services/catalogo.service';
+import { Game } from '../../entities/game';
 
 
 @Component({
@@ -8,6 +10,15 @@ import { Component } from '@angular/core';
   templateUrl: './visualizar-jogos.component.html',
   styleUrl: './visualizar-jogos.component.css'
 })
-export class VisualizarJogosComponent {
-  jogos: any[] = []
+export class VisualizarJogosComponent implements OnInit {
+  jogos: Game[] = []
+
+  catalogoService = inject(CatalogoService)
+
+  ngOnInit() {
+    this.catalogoService.getAll().subscribe(
+      (jogos: any[]) =>
+        this.jogos = jogos
+    )
+  }
 }

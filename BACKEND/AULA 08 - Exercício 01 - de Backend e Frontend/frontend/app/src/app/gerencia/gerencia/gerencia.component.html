@@ -1,2 +1,44 @@
 <h2>Área de Gerência - Cadastro</h2>
 <p>Gerencie os jogos cadastrados no banco.</p>
+
+<div class="container">
+    <div class="cadastro">
+        <nav>
+            <a  >➕ Novo Jogo</a>
+        </nav>
+        <hr>
+    </div>
+
+    <form (submit)="onSubmit()">
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome: </th>
+                    <th>Tipo:</th>
+                    <th>Ano:</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if(games.length === 0) {
+                <tr>
+                    <td colspan="4">Nenhum jogo cadastrado.</td>
+                </tr>
+                }@else {
+                @for(game of games; track game.id) {
+                <tr>
+                    <td>{{ game.nome }}</td>
+                    <td>{{ game.tipo }}</td>
+                    <td>{{ game.ano }}</td>
+
+                    <td>
+                        <button (click)="editar()">Editar</button>
+                        <button (click)="excluir()">Excluir</button>
+                    </td>
+                </tr>
+                }
+                }
+
+            </tbody>
+        </table>
+    </form>
+</div>
