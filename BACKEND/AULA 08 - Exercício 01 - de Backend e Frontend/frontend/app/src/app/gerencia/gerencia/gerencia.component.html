@@ -8,19 +8,13 @@
         </nav>
         <hr>
     </div>
-    <!-- 
+
     <app-modal 
         [visible]="modalVisivel" 
-        [title]="'Inserir Novo Jogo'" 
-        (closed)="closeModal()"
+        [title]="editando ? 'Editar Jogo' : 'Inserir Novo Jogo'" 
+        [game]="game"
+        (closed)="closeModal()" 
         (confirm)="salvarJogo($event)">
-    </app-modal>
-     -->
-    <app-modal 
-    [visible]="modalVisivel" 
-    [title]="editando ? 'Editar Jogo' : 'Inserir Novo Jogo'" 
-    [game]="game"
-    (closed)="closeModal()" (confirm)="salvarJogo($event)">
     </app-modal>
 
     <form>
@@ -30,6 +24,7 @@
                     <th>Nome: </th>
                     <th>Tipo:</th>
                     <th>Ano:</th>
+                    <th>Ações:</th>
                 </tr>
             </thead>
             <tbody>
