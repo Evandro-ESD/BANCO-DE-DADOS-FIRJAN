@@ -1,8 +1,6 @@
 import db from '../db.js';
-// import { validaPassword } from '../service/decryptService.js';
-// import { generateToken } from '../service/jwtService.js';
 import jwtService from '../service/jwtService.js';
-
+import decryptService from '../service/decryptService.js';
 
 const login = async (req, res) => {
   try {
@@ -23,7 +21,7 @@ const login = async (req, res) => {
     console.log("teste", user)
 
     // Validar senha
-    const senhaValida = await jwtService.validaPassword(senha, user.senha);
+    const senhaValida = await decryptService.validaPassword(senha, user.senha);
     if (!senhaValida) {
       return res.status(401).json({ message: 'Senha inválida' });
     }
@@ -39,7 +37,7 @@ const login = async (req, res) => {
       user: {
         id: user.id,
         nome: user.nome,
-        login: user.email
+        login: user.login
       }
     });
 
