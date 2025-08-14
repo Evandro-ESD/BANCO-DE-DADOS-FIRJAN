@@ -1,33 +1,57 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}
+
 .titulo-jogos {
     font-family: 'Segoe UI', sans-serif;
-    color: #2c3e50;
+    color: white;
+    background-color: #333;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 2px;
     font-size: 1.8rem;
+    height: auto;
+    width: 100%;
 }
 
-/* Lista */
-.lista-jogos {
-    list-style: none; /* remove bolinhas padrão */
-    padding: 0;
-    max-width: 400px;
-    margin: 0 auto; /* centraliza a lista */
-}
-
-/* Itens da lista */
-.item-jogo {
-    background-color: #ecf0f1;
-    margin-bottom: 10px;
-    padding: 12px 18px;
+.show-table {
+    background-color: rgb(202, 200, 200);
+    padding: 10px;
     border-radius: 8px;
-    font-size: 1.1rem;
-    transition: all 0.3s ease;
-    cursor: pointer;
+    height: 70dvh;
+    width: 100%;
+    display: flex;
+    /* flex-wrap: wrap; */
+    justify-content: center;
+    align-items: flex-start;
 }
 
-/* Efeito ao passar o mouse */
-.item-jogo:hover {
-    background-color: #3498db;
-    color: #fff;
-    transform: translateX(5px);
+
+.show-table table {
+    width: 80%;
+    border-collapse: collapse;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.show-table th,
+.show-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    width: 30%;
+}
+
+.show-table th {
+    background-color: #333;
+    color: white;
+}
+
+.show-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.show-table tr:hover {
+    background-color: #ddd;
 }

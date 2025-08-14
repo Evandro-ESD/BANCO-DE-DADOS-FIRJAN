@@ -1,6 +1,27 @@
-<h2 class="titulo-jogos">Jogos Disponíveis</h2>
-<ul class="lista-jogos">
-    @for(jogo of jogos; track jogo.id){
-    <li class="item-jogo">{{ jogo.nome }} -{{ jogo.tipo }} - {{ jogo.ano }}</li>
-    }
-</ul>
+<div class="titulo-jogos">
+    <h2>Jogos Disponíveis</h2>
+</div>
+
+
+<div class="show-table">
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Tipo</th>
+                <th>Ano</th>
+            </tr>
+        </thead>
+        @for(jogo of jogos; track jogo.id){
+        <tbody>
+            <tr>
+                <td>{{ jogo.nome }}</td>
+                <td>{{ jogo.tipo }}</td>
+                <td>{{ jogo.ano }}</td>
+            </tr>
+        </tbody>
+        }
+    </table>
+
+</div>
