@@ -1,6 +1,6 @@
-import jwt from 'jsonwebtoken'
-import dotenv from 'dotenv'
-dotenv.config()
+import jwt from 'jsonwebtoken';
+import dotenv from 'dotenv';
+dotenv.config();
 
 // gerar um token do usuário com tempo de expiração
 const generateToken = (user) => {

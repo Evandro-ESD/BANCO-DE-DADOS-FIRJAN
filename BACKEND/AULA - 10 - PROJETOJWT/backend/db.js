@@ -7,7 +7,7 @@ dotenv.config()
 const pool = mysql.createPool({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
-    password: process.env.DV_PASSWORD,
+    password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
     waitForConnections: true, // Fica na fila se todas as conexões estiverem ocupadas
     connectionLimit: 10,      // Máximo de conexões simultâneas
