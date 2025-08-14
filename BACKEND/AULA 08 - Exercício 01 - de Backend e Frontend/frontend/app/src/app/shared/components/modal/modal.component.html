@@ -1,14 +1,29 @@
-
 @if (visible) {
-      <div class="overlay" (click)="close()">
-        <section class="modal" (click)="$event.stopPropagation()">
-          <header>
-            <h3>{{ title }}</h3>
-            <button (click)="close()">✖</button>
-          </header>
-          <main>
-            <ng-content></ng-content>
-          </main>
-        </section>
-      </div>
-    }
+  <div class="overlay" (click)="close()">
+    <section class="modal" (click)="$event.stopPropagation()">
+      <header>
+        <h3>{{ title }}</h3>
+        <button class="close-btn" (click)="close()">✖</button>
+      </header>
+      <main>
+        <label>
+          Nome:
+          <input type="text" [(ngModel)]="nome">
+        </label>
+
+        <label>
+          Tipo:
+          <input type="text" [(ngModel)]="tipo">
+        </label>
+
+        <label>
+          Ano:
+          <input type="number" [(ngModel)]="ano">
+        </label>
+      </main>
+      <footer>
+        <button (click)="onConfirm()">Confirmar</button>
+      </footer>
+    </section>
+  </div>
+}

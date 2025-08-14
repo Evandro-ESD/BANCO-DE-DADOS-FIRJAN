@@ -29,9 +29,9 @@ export class CatalogoService {
     return this.http.post(environment.apiUrl, game)
   }
 
-  editarGame(id: number, game: Game): Observable<Game> {
-    return this.http.put(`${environment.apiUrl}${id}`, game)
-  }
+  editarGame(game: Game) {
+  return this.http.put<Game>(`${environment.apiUrl}${game.id}`, game);
+}
 
   deletarGame(id: number) {
     return this.http.delete(`${environment.apiUrl}${id}`)

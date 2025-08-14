@@ -4,12 +4,26 @@
 <div class="container">
     <div class="cadastro">
         <nav>
-            <a  >➕ Novo Jogo</a>
+            <button (click)="openModal()">Novo jogo</button>
         </nav>
         <hr>
     </div>
+    <!-- 
+    <app-modal 
+        [visible]="modalVisivel" 
+        [title]="'Inserir Novo Jogo'" 
+        (closed)="closeModal()"
+        (confirm)="salvarJogo($event)">
+    </app-modal>
+     -->
+    <app-modal 
+    [visible]="modalVisivel" 
+    [title]="editando ? 'Editar Jogo' : 'Inserir Novo Jogo'" 
+    [game]="game"
+    (closed)="closeModal()" (confirm)="salvarJogo($event)">
+    </app-modal>
 
-    <form (submit)="onSubmit()">
+    <form>
         <table>
             <thead>
                 <tr>
@@ -31,8 +45,8 @@
                     <td>{{ game.ano }}</td>
 
                     <td>
-                        <button (click)="editar()">Editar</button>
-                        <button (click)="excluir()">Excluir</button>
+                        <button (click)="editar(game)">Editar</button>
+                        <button (click)="excluir(game.id!)">Excluir</button>
                     </td>
                 </tr>
                 }
