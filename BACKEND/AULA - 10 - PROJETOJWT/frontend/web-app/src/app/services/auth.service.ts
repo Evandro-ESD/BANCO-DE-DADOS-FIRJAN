@@ -13,7 +13,7 @@ interface loginResponse {
   providedIn: 'root'
 })
 export class AuthService {
-  private baseUrl = 'http://localhost:3015/api/auth/login'
+  private baseUrl = 'http://localhost:3015/api/auth'
 
   private logedID = new BehaviorSubject(false)
   private userRole = new BehaviorSubject<'admin' | 'user' | null>(null)
