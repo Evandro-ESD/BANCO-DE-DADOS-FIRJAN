@@ -7,4 +7,4 @@ const validaPassword = async (inputPwt, dbPwd) => {
     return await inputPwt === dbPwd
 }
 
-export default {validaPassword}
+export default { validaPassword }
